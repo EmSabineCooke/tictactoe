@@ -3,9 +3,13 @@ console.log("howdy");
 const resultMessage = document.getElementById("response");
 const resetGame = document.getElementById("resetGame");
 const switchTurn = document.getElementById("nextPlayer")
-const player1name = document.getElementById("player1name")
-const player2name = document.getElementById("player2name")
 
+
+const player2input = document.getElementById("player2name")
+const playerbutton = document.getElementById('playerButton')
+const p1 = document.getElementById("p1")
+const p2 = document.getElementById("p2")
+const playerForm = document.getElementById("playerform")
 
 const cell1 = document.getElementById("b1")
 const cell2 = document.getElementById("b2")
@@ -16,6 +20,8 @@ const cell6 = document.getElementById("b6")
 const cell7 = document.getElementById("b7")
 const cell8 = document.getElementById("b8")
 const cell9 = document.getElementById("b9")
+
+
 // const cells = [cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9]
 // console.log(cells)
 
@@ -27,8 +33,8 @@ const gameState = {
     [cell4, cell5, cell6],
     [cell7, cell8, cell9]
   ]
+
 }
-console.log(gameState.board);
 
 let winningCombonations = [
   [cell1, cell2, cell3],
@@ -41,26 +47,16 @@ let winningCombonations = [
   [cell3, cell5, cell7]
 ]
 
-// let winningCombonationsO = [
-//   [cell1, cell2, cell3],
-//   [cell4, cell5, cell6],
-//   [cell7, cell8, cell9],
-//   [cell1, cell4, cell7],
-//   [cell2, cell5, cell8],
-//   [cell3, cell6, cell9],
-//   [cell1, cell5, cell9],
-//   [cell3, cell5, cell7]
-// ]
-
-let player1 = gameState.players[0]
-let player2 = gameState.players[1]
+let player1 = gameState.players[0];
+let player2 = gameState.players[1];
 let currentPlayer = player1;
-
+let player1Name = ""
+let player2Name = "";
 // let state;
 // //starting state has all spaces empty
 const buildInitialState = () => {
   console.log('b')
-  cell1.innerHTML = " ";
+  cell1.innerText = " ";
   cell2.innerText = " ";
   cell3.innerText = " ";
   cell4.innerText = " ";
@@ -72,6 +68,13 @@ const buildInitialState = () => {
   // gameState();
 }
 buildInitialState()
+
+
+playerbutton.addEventListener('click', () => {
+  player1Name = document.getElementById("player1name").value;
+  console.log(player1Name.innerHTML)
+
+})
 
 
 
@@ -90,39 +93,40 @@ const playerSwitch = () => {
 };
 
 const checkWin = () => {
-  // if X has clicked a winning combonation x wins
+  //   // if X has clicked a winning combonation x wins
   console.log("checkWin")
-  if (winningCombonations.innerText = "X") {
-    Win()
-  }
-  // else if (winningCombonations =) {
-  playerSwitch()
 
-  // if (winningCombonations === true && (currentPlayer === player1));
-  // result = 'xWin';
-  // Win()
-  // // // else if (3 in a row O) { let result = Owin }
-  // if (winningCombonations === true && (currentPlayer === player2)) {
-  //   result = 'oWin';
-  //   Win()
-  // }
-  // else (
-}
-const Win = () => {
-  console.log("win")
-  if (result === 'xWin') {
-    return resultMessage.innerText = "X Wins!";
+  if (cell1.innerText === 'X' && cell2.innerText === 'X' && cell3.innerText === 'X'
+    || cell4.innerText === 'X' && cell5.innerText === 'X' && cell6.innerText === 'X'
+    || cell7.innerText === 'X' && cell8.innerText === 'X' && cell9.innerText === 'X'
+    || cell1.innerText === 'X' && cell4.innerText === 'X' && cell7.innerText === 'X'
+    || cell2.innerText === 'X' && cell5.innerText === 'X' && cell8.innerText === 'X'
+    || cell3.innerText === 'X' && cell6.innerText === 'X' && cell9.innerText === 'X'
+    || cell1.innerText === 'X' && cell5.innerText === 'X' && cell9.innerText === 'X'
+    || cell3.innerText === 'X' && cell5.innerText === 'X' && cell7.innerText === 'X') {
+
+    return resultMessage.innerText = currentPlayer + " Wins!"
   }
 
-  else if (result === 'oWin') {
-    return resultMessage.innerText = "O Wins!";
-  }
 
-  else {
-    return resultMessage.innerText = "Its a Tie";
+  else if (cell1.innerText === 'O' && cell2.innerText === 'O' && cell3.innerText === 'O'
+    || cell4.innerText === 'O' && cell5.innerText === 'O' && cell6.innerText === 'O'
+    || cell7.innerText === 'O' && cell8.innerText === 'O' && cell9.innerText === 'O'
+    || cell1.innerText === 'O' && cell4.innerText === 'O' && cell7.innerText === 'O'
+    || cell2.innerText === 'O' && cell5.innerText === 'O' && cell8.innerText === 'O'
+    || cell3.innerText === 'O' && cell6.innerText === 'O' && cell9.innerText === 'O'
+    || cell1.innerText === 'O' && cell5.innerText === 'O' && cell9.innerText === 'O'
+    || cell3.innerText === 'O' && cell5.innerText === 'O' && cell7.innerText === 'O') {
+
+    return resultMessage.innerText = currentPlayer + " Wins!"
   }
+  else (playerSwitch())
+
 
 }
+
+
+
 const restart = () => {
   console.log('reset!');
   location.reload();
@@ -130,15 +134,16 @@ const restart = () => {
 
 
 
-// resetGame.addEventListener('click', reset);
+
 cell1.addEventListener('click', () => {
-  console.log(cell1.innerText);
   if (currentPlayer === player1) {
+
     cell1.innerText = "X"
   }
   else if (currentPlayer === player2) {
     cell1.innerText = "O"
   }
+  console.log(cell1.innerText);
   checkWin()
 }, { once: true });
 cell2.addEventListener('click', () => {
@@ -149,6 +154,7 @@ cell2.addEventListener('click', () => {
   else if (currentPlayer === player2) {
     cell2.innerText = "O"
   }
+  console.log(cell2.innerText);
   checkWin()
 }, { once: true });
 cell3.addEventListener('click', () => {
@@ -221,9 +227,5 @@ cell9.addEventListener('click', () => {
   }
   checkWin()
 }, { once: true })
-// cells.addEventListener('click', () => { console.log('cells') 
-// if (currentPlayer = player1){
-//   let (cell .innerText = "X"
-// }
-// }, { once: true })
+
 resetGame.addEventListener('click', restart)

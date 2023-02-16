@@ -69,6 +69,10 @@ h1 {
   font-family: monospace;
 }
 
+.pText {
+  justify-content: center;
+}
+
 button {
   height: 20px;
   position: relative;
