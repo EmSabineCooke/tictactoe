@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<!-- <header> -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<!-- </header> -->
+
+<body>
+  <h1>Tic Tac Toe</h1>
+  <!-- player names -->
+  <p>
+    Player 1 Name:
+    <input type="text" id="player1name">
+  </p>
+
+
+
+  <p id="p1" class="pText"></p>
+  <br>
+  <p>
+    Player 2 Name:
+    <input type="text" id="player2name">
+  </p>
+  <button id="playerButton">Submit</button>
+
+  <p id="p2" class="pText"></p>
+  <br>
+
+  <p id="response"> <!--Result here (X/O wins!)--> </p>
+
+  <br>
+
+  <div id="gameBoard">
+    <div id="column1">
+      <div cellIndex="0" class="blankSpace" id="b1"></div>
+
+      <div cellIndex="1" class="blankSpace" id="b2"></div>
+
+      <div cellIndex="2" class="blankSpace" id="b3"></div>
+    </div>
+    <br>
+    <div id="column2">
+      <div cellIndex="3" class="blankSpace" id="b4"></div>
+
+      <div cellIndex="4" class="blankSpace" id="b5"></div>
+
+      <div cellIndex="5" class="blankSpace" id="b6"></div>
+    </div>
+    <br>
+    <div id="column3">
+      <div cellIndex="6" class="blankSpace" id="b7"></div>
+
+      <div cellIndex="7" class="blankSpace" id="b8"></div>
+
+      <div cellIndex="8" class="blankSpace" id="b9"></div>
+    </div>
+  </div>
+
+  <br>
+  <button id="resetGame">
+    restart
+  </button>
+</body>
+
+
+
+</html>
